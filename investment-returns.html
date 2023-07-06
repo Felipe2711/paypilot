@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Investment Returns</title>
+  <link rel="stylesheet" type="text/css" href="estilos.css\styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="returns-container">
+    <h1>Investment Returns</h1>
+    <div class="returns-message" id="returns-message">
+      Your investment returns: $<span id="investment-returns">0.00</span>
+    </div>
+    <canvas id="investment-chart" width="400" height="200"></canvas>
+    <div class="back-button-container">
+      <button class="back-button" onclick="window.location.href = 'welcome.html'">Back</button>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="logo-container">
+    <img class="logo" src="images\logo.png" alt="Logo">
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const returnsElement = document.getElementById("investment-returns");
+
+      if (urlParams.has("investment")) {
+        const investmentValue = parseFloat(urlParams.get("investment"));
+
+        if (!isNaN(investmentValue)) {
+          // Calculate investment returns (assume fixed return rate of 5%)
+          const investmentReturns = investmentValue * 0.05;
+          returnsElement.textContent = investmentReturns.toFixed(2);
+
+          // Create a simple line chart to display investment returns over time
+          const ctx = document.getElementById("investment-chart").getContext("2d");
+          new Chart(ctx, {
+            type: "line",
+            data: {
+              labels: ["Month 1", "Month 2", "Month 3", "Month 4", "Month 5", "Month 6"],
+              datasets: [{
+                label: "Investment Returns",
+                data: [0, investmentReturns * 0.25, investmentReturns * 0.5, investmentReturns * 0.75, investmentReturns, investmentReturns * 1.25],
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: "Returns ($)"
+                  }
+                },
+                x: {
+                  title: {
+                    display: true,
+                    text: "Time"
+                  }
+                }
+              }
+            }
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>

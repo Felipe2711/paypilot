@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="estilos.css\styles.css">
+</head>
+<body>
+  <div class="withdraw-container">
+    <h1>Withdraw Money</h1>
+    <form id="withdraw-form" action="#">
+      <div class="form-group">
+        <label for="amount">Amount to withdraw:</label>
+        <input type="text" id="amount" name="amount" placeholder="Enter amount" required>
+      </div>
+      <div class="form-group">
+        <label for="account">Account:</label>
+        <input type="text" id="account" name="account" placeholder="Enter account" required maxlength="9">
+      </div>
+      <div class="form-group">
+        <label for="agency">Agency:</label>
+        <input type="text" id="agency" name="agency" placeholder="Enter agency" required maxlength="4">
+      </div>
+      <div class="form-group">
+        <button type="submit">Withdraw</button>
+      </div>
+      <div class="back-button-container">
+        <button class="back-button" onclick="window.location.href = 'welcome.html'">Back</button>
+      </div>
+    </form>
+    <div id="message"></div>
+  </div>
+  <br>
+  <br>
+  <div class="logo-container">
+    <img class="logo" src="images\logo.png" alt="Logo">
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const withdrawForm = document.getElementById("withdraw-form");
+      const messageDiv = document.getElementById("message");
+
+      withdrawForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Impede o envio do formulário padrão
+
+        const amountInput = document.getElementById("amount");
+        const accountInput = document.getElementById("account");
+        const agencyInput = document.getElementById("agency");
+
+        const amount = parseFloat(amountInput.value);
+        const account = accountInput.value;
+        const agency = agencyInput.value;
+
+        if (isNaN(amount) || amount <= 0) {
+          messageDiv.textContent = "Please enter a valid withdrawal amount.";
+          return;
+        }
+
+        // Simulação de processamento do formulário
+        // Aqui você pode adicionar sua lógica de processamento real do formulário
+        // e retornar uma mensagem de sucesso ou erro
+
+        // Exemplo de mensagem de sucesso
+        const successMessage = "Withdrawal successful. Amount: $$" + amount.toFixed(2) + " . Account: " + account + ", Agency: " + agency;
+        // Exemplo de mensagem de erro
+        const errorMessage = "Withdrawal failed. Invalid account or agency.";
+
+        // Exibir mensagem de retorno
+        messageDiv.textContent = successMessage;
+        // Em caso de erro, utilize: messageDiv.textContent = errorMessage;
+
+        // Redirecionar para a página de boas-vindas após 3 segundos
+        setTimeout(function() {
+          window.location.href = "welcome.html";
+        }, 3000);
+
+      });
+    });
+  </script>
+</body>
+</html>

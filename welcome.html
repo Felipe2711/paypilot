@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome</title>
+  <link rel="stylesheet" type="text/css" href="estilos.css\styles.css">
+</head>
+<body>
+  <div class="welcome-container">
+    <h1>Welcome User!</h1>
+    <div class="account-balance" id="account-balance">
+      Your account balance: $<span id="balance">100</span>
+    </div>
+    <div class="options">
+      <button onclick="window.location.href = 'invest.html'">Invest Money</button>
+      <button onclick="window.location.href = 'withdraw.html'">Withdraw Money</button>
+      <button onclick="window.location.href = 'investment-tips.html'">Investment Tips</button>
+      <button onclick="window.location.href = 'account-statement.html'">Account Statement</button>
+    </div>
+    <div class="profile-button-container">
+      <button class="profile-button" onclick="window.location.href = 'profile.html'">Profile</button>
+      <div class="returns-button-container">
+        <button class="returns-button" onclick="window.location.href = 'investment-returns.html?investment=100'">View Investment Returns</button>
+      </div>
+    </div>
+    <div class="logout-button-container">
+      <button class="logout-button" onclick="window.location.href = 'index.html'">Logout</button>
+  <div class="logo-container">
+    <img class="logo" src="images\logo.png" alt="Logo">
+  </div>
+</body>
+</html>

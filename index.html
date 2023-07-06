@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="estilos.css\styles.css">
+  <style>
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-container">
+      <img src="images\logo.png" alt="Logo">
+    </div>
+    <div class="avatar-container">
+      <img src="images\avatar.png" alt="Avatar" class="avatar">
+    </div>
+    <form id="login-form" action="process.php" method="POST">
+      <div class="mb-3">
+        <input type="text" class="form-control" id="username-email" name="username-email" placeholder="Username or Email" required>
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+      </div>
+      
+      <div class="mb-3">
+        <input type="submit" class="btn btn-primary" value="Submit">
+      </div>
+
+      <div class="mb-3">
+        <a href="forgot-password.html" id="forgot-password-link">Forgot Password?</a>
+      </div>
+    </form>
+    <div id="message"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("login-form");
+      const messageDiv = document.getElementById("message");
+
+      form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Simulate form processing
+        // Here you can add your actual form processing logic
+        // and return a success or error message
+
+        // Example success message
+        const successMessage = "Form submitted successfully!";
+        // Example error message
+        const errorMessage = "An error occurred while submitting the form.";
+
+        // Display the return message
+        messageDiv.textContent = successMessage;
+        // For error, use: messageDiv.textContent = errorMessage;
+
+        // Redirect to welcome.html after form submission
+        window.location.href = "welcome.html";
+      });
+
+      const forgotPasswordLink = document.getElementById("forgot-password-link");
+
+      forgotPasswordLink.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        // Redirect to the password recovery page
+        window.location.href = "forgot-password.html";
+      });
+    });
+  </script>
+</body>
+</html>

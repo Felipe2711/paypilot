@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="estilos.css\styles.css">
+</head>
+<body>
+  <div class="profile-container">
+    <h1>User Profile</h1>
+    <div class="form-group">
+      <label for="photo">Profile Photo:</label>
+      <input type="file" id="photo" name="photo">
+    </div>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone">
+    </div>
+    <div class="form-group">
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+    </div>
+    <div class="button-container">
+      <button class="save-button" onclick="saveProfile()">Save</button>
+      <button class="back-button" onclick="goBack()">Back</button>
+    </div>
+    <div class="message-container">
+      <p id="message" class="success-message"></p>
+    </div>
+  </div>
+
+  <script>
+    function saveProfile() {
+      // Lógica para salvar o perfil do usuário
+      // Aqui você pode adicionar o código necessário para salvar os dados do perfil
+
+      // Simulação de sucesso ou falha ao salvar o perfil
+      const isSuccess = true; // Defina como false para simular uma falha
+
+      const messageElement = document.getElementById("message");
+      if (isSuccess) {
+        messageElement.textContent = "Profile saved successfully.";
+        messageElement.classList.remove("error-message");
+        messageElement.classList.add("success-message");
+        setTimeout(function() {
+          window.location.href = "welcome.html";
+        }, 3000); // Redireciona para a página "welcome.html" após 3 segundos (3000 milissegundos)
+      } else {
+        messageElement.textContent = "Failed to save profile.";
+        messageElement.classList.remove("success-message");
+        messageElement.classList.add("error-message");
+      }
+    }
+
+    function goBack() {
+      window.history.back(); // Volta para a página anterior
+    }
+  </script>
+</body>
+</html>
